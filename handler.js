@@ -9,9 +9,9 @@ const language = "en";
 
 module.exports.hello = async (event) => {
   const data = {
-    sender_email: "",
-    sender_nickname: "",
-    sender_ip: "",
+    sender_email: "someone@example.com",
+    sender_nickname: "someone",
+    sender_ip: "192.168.0.1",
     js_on: true,
     submit_time: 3,
     sender_info: { remote_addr: "" },
@@ -25,12 +25,7 @@ module.exports.hello = async (event) => {
 
   const client = new Cleantalk({ auth_key: authKey, language });
   // Documentation: https://cleantalk.org/help/api-check-message
-  // BREAKING: Nope, can't do this. request must be of type http.IncomingMessage. Gaa.
-  // Can't leave request as undefined because CleantalkRequest.js@131 references request.headers[].
-  const request = new IncomingMessage(new Socket());
-  const decision = await client.isAllowMessage(
-    new CleantalkRequest({ data, request })
-  );
+  const decision = await client.checkMessage(data);
 
   return {
     statusCode: 200,
