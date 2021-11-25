@@ -1,0 +1,22 @@
+service: cleantalk-test
+frameworkVersion: '2 || 3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+
+plugins:
+  - serverless-offline
+
+functions:
+  hello:
+    handler: handler.hello
+    environment:
+      CLEANTALK_AUTH_KEY: ${env:CLEANTALK_AUTH_KEY} 
+    events:
+      - httpApi:
+          path: /
+          method: get

@@ -1,0 +1,17 @@
+{
+  "name": "cleantalk-client",
+  "version": "1.0.0",
+  "description": "CleanTalk API Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sls offline"
+  },
+  "author": "Paul Heasley <paul@phdesign.com.au>",
+  "license": "MIT",
+  "dependencies": {
+    "cleantalk": "^1.0.3",
+    "serverless": "^2.66.2",
+    "serverless-offline": "^8.3.0"
+  }
+}
